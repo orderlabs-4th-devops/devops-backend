@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // 커스텀 BaseException 처리
+    // 커스텀 BaseException 처리~~
     @ExceptionHandler(BaseException.class)
     public ResponseEntity<BaseResponse<?>> handleBaseException(BaseException e) {
         BaseResponse<?> response = BaseResponse.fail(
