@@ -1,0 +1,38 @@
+### Java ###
+*.class
+*.war
+*.ear
+*.jar
+
+### Spring Boot ###
+/build/
+/target/
+/out/
+
+### Logs ###
+*.log
+*.log.*
+
+### IDE & Editor ###
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VSCode
+.vscode/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+### OS Files ###
+.DS_Store
+Thumbs.db
+
+### Others ###
+/.gradle/
+/.mvn/
+!gradle/wrapper/gradle-wrapper.jar

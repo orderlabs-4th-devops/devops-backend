@@ -1,0 +1,91 @@
+spring:
+  cloud:
+    aws:
+      credentials:
+        access-key: ${AWS_ACCESS_KEY}
+        secret-key: ${AWS_SECRET_KEY}
+      s3:
+        bucket: ${AWS_BUCKET_NAME}
+      region:
+        static: ${AWS_REGION_NAME}
+
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: ${KAKAO_CLIENT_ID}
+            client-secret: ${KAKAO_CLIENT_SECRET}
+            client-name: Kakao
+            authorization-grant-type: authorization_code
+            redirect-uri: ${KAKAO_REDIRECT_URI}
+            scope: profile_nickname
+            client-authentication-method: client_secret_post
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+          auth: true
+          timeout: 5000
+
+  datasource:
+    url: ${DB_URL}
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+#    master:
+#      jdbc-url: ${MASTER_DB_URL}
+#      driver-class-name: org.mariadb.jdbc.Driver
+#      username: ${MASTER_DB_USERNAME}
+#      password: ${MASTER_DB_PASSWORD}
+#    slave:
+#      jdbc-url: ${SLAVE_DB_URL}
+#      driver-class-name: org.mariadb.jdbc.Driver
+#      username: ${SLAVE_DB_USERNAME}
+#      password: ${SLAVE_DB_PASSWORD}
+
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      mode: always
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+
+api:
+  weather:
+    apikey: ${WEATHER_API_KEY}
+
+portone:
+  api-key: ${PORT_ONE_API_KEY}
+  api-secret: ${PORT_ONE_SECRET_KEY}
+  mode: TEST
+
+
+webpush:
+  public-key: ${PUBLIC_KEY}
+  private-key: ${PRIVATE_KEY}
+  subject: ${WEBPUSH_SUBJECT}
